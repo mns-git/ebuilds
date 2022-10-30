@@ -16,8 +16,14 @@ IUSE="savedconfig"
 
 DOCS="LICENSE README"
 
-RDEPEND="x11-libs/libX11"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXft
+"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+	x11-base/xorg-proto
+"
 BDEPEND=""
 
 src_prepare() {
@@ -27,5 +33,6 @@ src_prepare() {
 
 src_install() {
 	default
+	dodoc README
 	use savedconfig && save_config config.h
 }
