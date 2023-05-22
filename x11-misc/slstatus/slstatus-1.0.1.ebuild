@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3 savedconfig
+inherit git-r3 savedconfig check-reqs
 
 DESCRIPTION="Suckless Status Tool"
 HOMEPAGE="https://tools.suckless.org/slstatus/"
@@ -26,6 +26,21 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND=""
+
+check_req() {
+	local CHECKREQS_DISK_BUILD="1M"
+	local CHECKREQS_DISK_USR="1M"
+	local CHECKREQS_MEMORY="2G"
+	check-reqs_${EBUILD_PHASE_FUNC}
+}
+
+pkg_pretend() {
+	check_req
+}
+
+pkg_setup() {
+	check_req
+}
 
 src_prepare() {
 	default
