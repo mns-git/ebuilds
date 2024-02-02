@@ -54,5 +54,5 @@ src_install() {
 }
 
 pkg_postinst() {
-  elog "Check ${HOMEPAGE} for more Details"
+  einfo "Check ${HOMEPAGE} for more Details"
 }
